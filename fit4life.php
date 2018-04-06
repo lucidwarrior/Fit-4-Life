@@ -20,3 +20,26 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 with this program. If not, visit: https://www.gnu.org/licenses/
 */
+
+
+// exit if file is called directly
+if ( ! defined( 'ABSPATH' ) ) {
+
+	exit;
+
+}
+
+
+// if admin area
+if ( is_admin() ) {
+    
+    // include dependencies
+    require_once plugin_dir_path( __FILE__ ) . 'admin/admin-menu.php';
+    require_once plugin_dir_path( __FILE__ ) . 'admin/settings-page.php';
+    
+    
+}
+
+
+
+
