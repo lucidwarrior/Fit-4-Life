@@ -1,7 +1,7 @@
-=== Plugin Name ===
+=== Fit-4-Life Personal Trainer ===
 
-Plugin Name:  Fit-4-Life
-Description:  Fitness WordPress application for coaches and gyms
+Plugin Name:  Fit-4-Life Personal Trainer
+Description:  Fitness management application for personal trainers
 Plugin URI:   https://lucidwisdom.com
 Author:       David Cook
 Version:      1.0
@@ -10,11 +10,26 @@ Domain Path:  /languages
 License:      GPL v2 or later
 License URI:  https://www.gnu.org/licenses/gpl-2.0.txt
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+[name] is a fitness training application that allows personal trainers to develop custom training experiences for their members. Training members can record results of fitness tests and workouts, then receive feedback from trainers. Members can also track their performance and their personal best information.
 
 == Description ==
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
+Features:
+* Site owners can create custom workout programs
+* Coaches can assign copies of workout programs to members
+* Members can assign copies of workout programs to themselves
+* Members can view the workout programs and record their results.
+* Members can print their workout information.
+* Coaches can create exercise definitions and store in the exercise library where they can be accessed within the workout programs.
+* Exercise definitions can contain text descriptions, images, and video links
+* Exercise video links will pop up and play when selected
+* Site owners can create fitness tests
+* Coaches can assign copies of fitness tests to Members
+* Members can assign copies of fitness tests to themselves
+* Members can view the fitness tests and record their results.
+* Plugin will have an admin page for setting relevant fit4life_options
+* Plugin will have a sub page for managing workout and fitness test assignments so coaches can see current assignments as well as create new assignments.
+
 
 For backwards compatibility, if this section is missing, the full length of the short description will be used, and
 Markdown parsed.
@@ -45,10 +60,10 @@ This section describes how to install the plugin and get it working.
 
 e.g.
 
-1. Upload the plugin files to the `/wp-content/plugins/plugin-name` directory, or install the plugin through the WordPress plugins screen directly.
-1. Activate the plugin through the 'Plugins' screen in WordPress
-1. Use the Settings->Plugin Name screen to configure the plugin
-1. (Make your instructions match the desired user flow for activating and installing your plugin. Include any steps that might be needed for explanatory purposes)
+1. Upload the plugin files to the `/wp-content/plugins/fit-4-life` directory, or install the plugin through the WordPress plugins screen directly.
+2. Activate the plugin through the 'Plugins' screen in WordPress
+3. Use the Settings->Plugin Name screen to configure the plugin
+4. (Make your instructions match the desired user flow for activating and installing your plugin. Include any steps that might be needed for explanatory purposes)
 
 
 == Frequently Asked Questions ==
@@ -116,5 +131,3 @@ Markdown uses email style notation for blockquotes and I've been told:
 > Asterisks for *emphasis*. Double it up  for **strong**.
 
 `<?php code(); // goes in backticks ?>`
-
-

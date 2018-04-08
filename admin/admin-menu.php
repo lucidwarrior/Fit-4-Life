@@ -25,7 +25,7 @@ function fit4life_add_toplevel_menu() {
 
 	add_menu_page(
 		'Fit4Life Settings',
-		'Fit4Life',
+		'fit4life',
 		'manage_options',
 		'fit4life',
 		'fit4life_display_settings_page',
