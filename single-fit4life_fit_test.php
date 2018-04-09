@@ -194,7 +194,6 @@ get_header();
 
                 </article> <!-- .et_pb_post -->
 
-
             <?php endwhile; // end of the post loop. ?>
 
 		</div> <!-- .prog-container -->
@@ -203,14 +202,6 @@ get_header();
 		<?php get_sidebar(); ?>
 	</div> <!-- #content-area -->
 	</div> <!-- .container -->
-
-	<div id="b2p_footer">
-		<?php
-		// Add global divi footer template to CPT pages
-			 echo do_shortcode('[et_pb_section global_module="1139"] [/et_pb_section]');
-		?>
-	</div>
-
 </div> <!-- #main-content -->
 
 <?php get_footer(); ?>

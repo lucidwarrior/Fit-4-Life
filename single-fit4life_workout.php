@@ -24,8 +24,6 @@ get_header();
 		  <?php $before = ''; ?>
 		  <?php $after = ''; ?>
 
-			<?php //if (et_get_option('divi_integration_single_top') <> '' && et_get_option('divi_integrate_singletop_enable') == 'on') echo(et_get_option('divi_integration_single_top')); ?>
-
 			<article id="post-<?php the_ID(); ?>" <?php post_class( 'et_pb_post' ); ?>>
 
 				<div class="progHeader">
@@ -44,8 +42,6 @@ get_header();
 						<div class="progDetails"><?php the_field('fit4life_workout_details'); ?></div>
 					<?php } ?>
 
-					<!-- Set page permissions for MemberPress: Open Code -->
-					<?php // if(current_user_can('mepr_auth')): ?>
 
           <!--- Include Add Program Button --->
           <?php
@@ -203,14 +199,7 @@ get_header();
 
 				<?php endif; // if( have_rows('fit4life_workout_program') ): ?>
 
-				<?php if (et_get_option('divi_integration_single_bottom') <> '' && et_get_option('divi_integrate_singlebottom_enable') == 'on') echo(et_get_option('divi_integration_single_bottom')); ?>
-
-				<!-- Set page permissions for MemberPress: Close Code -->
-				<?php //else: ?>
-				<?php //echo do_shortcode('[mepr-unauthorized-message]'); ?>
-				<?php //endif; ?>
-
-			</article> <!-- .et_pb_post -->
+			</article>
 
 		<?php endwhile; // end of the post loop. ?>
 
@@ -220,14 +209,6 @@ get_header();
 		<?php get_sidebar(); ?>
 	</div> <!-- #content-area -->
 	</div> <!-- .container -->
-
-	<div id="fit4life_footer">
-		<?php
-		// Add global divi footer template to CPT pages
-			 //echo do_shortcode('[et_pb_section global_module="1139"] [/et_pb_section]');
-		?>
-	</div>
-
 </div> <!-- #main-content -->
 
 <?php get_footer(); ?>

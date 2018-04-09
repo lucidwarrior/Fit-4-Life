@@ -2,10 +2,6 @@
 
 get_header();
 
-$show_default_title = get_post_meta( get_the_ID(), '_et_pb_show_title', true );
-
-$is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
-
 ?>
 
 <div id="main-content">
@@ -70,14 +66,6 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 			<?php get_sidebar(); ?>
 		</div> <!-- #content-area -->
 	</div> <!-- .container -->
-
-	<div id="b2p_footer">
-		<?php
-		// Add global divi footer template to CPT pages
-			 echo do_shortcode('[et_pb_section global_module="1139"] [/et_pb_section]');
-		?>
-	</div>
-
 </div> <!-- #main-content -->
 
 <?php get_footer(); ?>
