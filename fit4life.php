@@ -520,8 +520,6 @@ function fit4life_workout_results(){
 
 				//update_sub_field(array('gf_workout_programs', 1, 'gf_exercises', 4, 'gf_exercise_results'), 'Test Data', 2565);
 
-				echo console.log("hello derpy dog...!");
-
 				$exercise = 1;
 
 				while($exercise <= $count) {
@@ -534,7 +532,7 @@ function fit4life_workout_results(){
 
 }
 
-// add_action( 'init', 'fit4life_workout_results', 0 );
+add_action( 'init', 'fit4life_workout_results', 0 );
 
 // 5.2
 // hint: Update results for each fit-test form from single-fit4life_fit_test.php
@@ -610,7 +608,7 @@ function fit4life_update_fit_test(){
 
 }
 
-//add_action( 'init', 'fit4life_update_fit_test', 0 );
+add_action( 'init', 'fit4life_update_fit_test', 0 );
 
 // 5.3
 // hint: Removed admin toolbar for all users except administrator

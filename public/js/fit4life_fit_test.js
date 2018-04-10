@@ -4,7 +4,7 @@ jQuery(document).ready(function ($) {
 	var wpajax_url = document.location.protocol + '//' + document.location.host + '/wp-admin/admin-ajax.php';
 
 	// workout data capture action url
-	var fit_test_data_url = wpajax_url + '?action=hfc_update_fit_test';
+	var fit_test_data_url = wpajax_url + '?action=fit4life_update_fit_test';
 
 	$('form#fit_test_results_form').bind('submit',function(){
 

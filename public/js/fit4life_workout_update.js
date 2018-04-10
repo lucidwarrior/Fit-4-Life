@@ -8,6 +8,8 @@ jQuery(document).ready(function($){
 	
 	$('form#exercise_results_form').bind('submit',function(){
 		
+        console.log('Hello world');
+        
 		// get the jquery form object
 		var $form = $(this);
 		
