@@ -15,9 +15,7 @@ Domain Path:  /languages
 
 // exit if file is called directly
 if ( ! defined( 'ABSPATH' ) ) {
-
-	exit;
-
+    exit;
 }
 
 
@@ -67,7 +65,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	8. ADMIN PAGES
 	9. SETTINGS
 */
-
 
 
 // 1. HOOKS

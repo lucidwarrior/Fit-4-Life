@@ -6,12 +6,10 @@ jQuery(document).ready(function($){
 	// workout data capture action url
 	var workout_data_url = wpajax_url + '?action=fit4life_workout_results';
 	
-	$('form#exercise_results_form').bind('submit',function(){
-		
-        console.log('Hello world');
+	$('form.exercise_results_form').bind('submit',function(){
         
 		// get the jquery form object
-		var $form = $(this);
+		$form = $(this);
 		
 		// setup our form data for our ajax post
 		var form_data = $form.serializeArray();
@@ -32,7 +30,7 @@ jQuery(document).ready(function($){
 					$form[0].reset();
 					// notify the user of success
 					//alert(xhr.message);
-					var msg = 'Update Request Successful: Please wait for page reload.';
+					var msg = 'Update Request Successful: Please wait for page to reload.';
 					alert( msg );
 					//alert(data.message);
 					location.reload();
