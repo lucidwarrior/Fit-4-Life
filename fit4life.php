@@ -22,32 +22,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 /* TABLE OF CONTENTS */
 /*
 	1. HOOKS
-		1.1 - registers all our custom shortcodes on init
-		1.2 - registers action to remove admin bar
-		1.3 - register Ajax actions
+		1.1 - Registers all our custom shortcodes on init
+		1.2 - Registers action to remove admin bar
+		1.3 - Register Ajax actions
         1.4 - Load external files to public website
-        1.5 - register custom admin column headers
-        1.6 - register custom admin column data
-        1.7 - add filter by author to workout admin page
-        1.8 - add filter by author to fitness test admin page
-        1.9 - add filter by author to exercise admin page
-        1.10 - add filters for Advanced Custom Fields Settings
-        1.11 - register our admin pages
+        1.5 - Register custom admin column headers
+        1.6 - Register custom admin column data
+        1.7 - Add filter by author to workout admin page
+        1.8 - Add filter by author to fitness test admin page
+        1.9 - Add filter by author to exercise admin page
+        1.10 - Add filters for Advanced Custom Fields Settings
+        1.11 - Register our admin pages
 	2. SHORTCODES
-		2.1 - fit4life_register_shortcodes()
-		2.2 - fit4life_register_shortcodes()
+		2.1 - Registers all custom shortcodes
+		2.2 - fit4life_active_workouts_shortcode
 		2.3 - fit4life_active_fit_tests_shortcode()
 	3. FILTERS
 		3.1a - Add workout column headers
 		3.1b - Add fit-test column headers
 		3.1c - Add exercises column headers
-		3.2a - Defining the filter that will be used so we can select posts by 'member'
-		3.2b - Defining the filter that will be used so we can select posts by 'member'
-		3.2c - Defining the filter that will be used so we can select posts by 'trainer'
-		3.3a - Restrict the posts by an additional author filter
-		3.3b - Restrict the posts by an additional author filter
-		3.3c - Restrict the posts by an additional author filter
-        3.4 - fit4life_admin_menus()
+		3.2a - Defining the filter that will be used so we can select workout posts by 'member'
+		3.2b - Defining the filter that will be used so we can select fitness test posts by 'member'
+		3.2c - Defining the filter that will be used so we can select exercise posts by 'trainer'
+		3.3a - Restrict workout posts by an additional 'member' filter
+		3.3b - Restrict fitness test posts by an additional 'member' filter
+		3.3c - Restrict exercise posts by an additional 'trainer' filter
+        3.4 - Register custom plugin admin menus
 	4. EXTERNAL SCRIPTS
 		4.1 - Include ACF plugin path
         4.2 - Loads external files into PUBLIC website; fit4life_public_scripts()
@@ -62,12 +62,14 @@ if ( ! defined( 'ABSPATH' ) ) {
         7.1 - Include ACF PHP Code
         7.2 - Include CPT PHP Code
 	8. ADMIN PAGES
-        8.1 - dashboard
+        8.1 - Dashboard
         8.2 - Workout admin page
         8.3 - Fitness test admin page
         8.4 - Exercise admin page
 	9. SETTINGS
 */
+
+
 
 
 // 1. HOOKS
@@ -124,7 +126,7 @@ function fit4life_acf_settings_path( $path ) {
     // update path
     $path = 'http://fit4life.lucidwisdom.com/wp-content/plugins/fit4life/lib/advanced-custom-fields-pro/';
     
-    //var_dump($path);
+    // The output using plugin_dir_path( __FILE__ ) for the plugin path; http://fit4life.lucidwisdom.com/home2/gmduqhmy/public_html/fit4life/wp-content/plugins/fit4life/lib/advanced-custom-fields-pro/
     
     // return
     return $path;
@@ -137,16 +139,12 @@ function fit4life_acf_settings_dir( $dir ) {
     // update path
     $dir = 'http://fit4life.lucidwisdom.com/wp-content/plugins/fit4life/lib/advanced-custom-fields-pro/';
     
-    //var_dump($dir);
-    
     // return
     return $dir;
     
 }
 
 add_filter('acf/settings/show_admin', '__return_false');
-
-// The output using plugin_dir_path( __FILE__ ) for the plugin path; http://fit4life.lucidwisdom.com/home2/gmduqhmy/public_html/fit4life/wp-content/plugins/fit4life/lib/advanced-custom-fields-pro/
 
 // 1.11
 // register our admin pages
@@ -162,7 +160,7 @@ add_action('admin_enqueue_scripts', 'fit4life_admin_scripts');
 // 2. SHORTCODES
 
 // 2.1
-// hint: registers all our custom shortcodes
+// hint: registers all custom shortcodes
 function fit4life_register_shortcodes() {
 
     add_shortcode( 'fit4life_active_workouts', 'fit4life_active_workouts_shortcode' );
@@ -182,11 +180,11 @@ function fit4life_active_workouts_shortcode( $args, $content="") {
 
 	$user_args = array(
 		'posts_per_page'   => 15,
-		'post_type' => array('fit4life_workout'),
-		'author' => $current_user->ID,
-		'orderby' => 'post_date',
-		'order' => 'ASC',
-		'post_status' => 'publish',
+		'post_type'        => 'fit4life_workout',
+		'author'           => $current_user->ID,
+		'orderby'          => 'post_date',
+		'order'            => 'ASC',
+		'post_status'      => 'publish',
 	);
 
 	$output = '<div class="member_post_sidebar">';
@@ -195,7 +193,7 @@ function fit4life_active_workouts_shortcode( $args, $content="") {
 
 	if($myposts) {
 
-    $output .= '<ul class="prog_active_list">';
+        $output .= '<ul class="prog_active_list">';
 
 		foreach ( $myposts as $post ) : setup_postdata( $post );
 
@@ -203,7 +201,7 @@ function fit4life_active_workouts_shortcode( $args, $content="") {
 
 		endforeach;
 
-    $output .= '</ul>';
+        $output .= '</ul>';
 
 		}
 
@@ -215,7 +213,7 @@ function fit4life_active_workouts_shortcode( $args, $content="") {
 
 		wp_reset_postdata();
 
-	$output .= '</div>';
+    $output .= '</div>';
 
 	// return our results/html
 	return $output;
@@ -234,11 +232,11 @@ function fit4life_active_fit_tests_shortcode( $args, $content="") {
 
 	$user_args = array(
 		'posts_per_page'   => 15,
-		'post_type' => array('fit4life_fit_test'),
-		'author' => $current_user->ID,
-		'orderby' => 'post_date',
-		'order' => 'ASC',
-		'post_status' => 'publish',
+		'post_type'        => 'fit4life_fit_test',
+		'author'           => $current_user->ID,
+		'orderby'          => 'post_date',
+		'order'            => 'ASC',
+		'post_status'      => 'publish',
 	);
 
 	$output = '<div class="member_post_sidebar">';
@@ -247,15 +245,15 @@ function fit4life_active_fit_tests_shortcode( $args, $content="") {
 
 	if($myposts) {
 
-  	$output .= '<ul class="prog_active_list">';
+  	     $output .= '<ul class="prog_active_list">';
 
-		foreach ( $myposts as $post ) : setup_postdata( $post );
+		 foreach ( $myposts as $post ) : setup_postdata( $post );
 
 			$output .= '<li class="prog_active_item">&#8594; <a href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
 
-		endforeach;
+		 endforeach;
 
-    $output .= '</ul>';
+         $output .= '</ul>';
 
 		}
 
@@ -302,10 +300,10 @@ function fit4life_fit_test_column_headers( $columns ) {
 
 	// creating custom column header data
 	$columns = array(
-		'cb'=>'<input type="checkbox" />',
-		'title'=>__('Fitness Test Name'),
-		'author' =>__('Member'),
-		'date'=>__('Date')
+		'cb'          =>'<input type="checkbox" />',
+		'title'       =>__('Fitness Test Name'),
+		'author'      =>__('Member'),
+		'date'        =>__('Date')
 	);
 
 	// returning new columns
@@ -319,12 +317,12 @@ function fit4life_exercise_column_headers( $columns ) {
 
 	// creating custom column header data
 	$columns = array(
-		'cb'=>'<input type="checkbox" />',
-		'title'=>__('Exercise Name'),
-		'author' =>__('Trainer'),
-    'movement'=>__('Movement'),
-    'area'=>__('Area'),
-		'date'=>__('Date')
+		'cb'          =>'<input type="checkbox" />',
+		'title'       =>__('Exercise Name'),
+		'author'      =>__('Trainer'),
+        'movement'    =>__('Movement'),
+        'area'        =>__('Area'),
+		'date'        =>__('Date')
 	);
 
 	// returning new columns
@@ -333,7 +331,7 @@ function fit4life_exercise_column_headers( $columns ) {
 }
 
 // 3.2a
-// hint: defining the filter that will be used so we can select posts by 'member'
+// hint: defining the filter that will be used so we can select workout posts by 'member'
 function add_author_filter_to_workout_administration(){
 
     //execute only on the 'post' content type
@@ -363,7 +361,7 @@ function add_author_filter_to_workout_administration(){
 }
 
 // 3.2b
-// hint: defining the filter that will be used so we can select posts by 'member'
+// hint: defining the filter that will be used so we can select fitness test posts by 'member'
 function add_author_filter_to_fit_test_administration(){
 
     //execute only on the 'post' content type
@@ -393,7 +391,7 @@ function add_author_filter_to_fit_test_administration(){
 }
 
 // 3.2c
-// hint: defining the filter that will be used so we can select posts by 'trainer'
+// hint: defining the filter that will be used so we can select exercise posts by 'trainer'
 function add_author_filter_to_exercise_administration(){
 
     //execute only on the 'post' content type
@@ -423,7 +421,7 @@ function add_author_filter_to_exercise_administration(){
 }
 
 // 3.3a
-// hint: restrict the posts by an additional author filter
+// hint: restrict workout posts by an additional author filter
 function add_author_filter_to_workout_query($query){
 
     global $post_type, $pagenow;
@@ -446,7 +444,7 @@ function add_author_filter_to_workout_query($query){
 }
 
 // 3.3b
-// hint: restrict the posts by an additional author filter
+// hint: restrict fitness test posts by an additional author filter
 function add_author_filter_to_fit_test_query($query){
 
     global $post_type, $pagenow;
@@ -469,7 +467,7 @@ function add_author_filter_to_fit_test_query($query){
 }
 
 // 3.3c
-// hint: restrict the posts by an additional author filter
+// hint: restrict exercise posts by an additional author filter
 function add_author_filter_to_exercise_query($query){
 
     global $post_type, $pagenow;
@@ -521,6 +519,8 @@ function fit4life_admin_menus() {
 }
 
 
+
+
 /* 4. EXTERNAL SCRIPTS */
 
 // 4.1
@@ -535,14 +535,12 @@ function fit4life_public_scripts() {
     wp_register_script('fit4life_workout_update-js-public', plugins_url('/public/js/fit4life_workout_update.js',__FILE__), array('jquery'),'',true);
     wp_register_script('fit4life_workout_menu-js-public', plugins_url('/public/js/fit4life_workout_menu.js',__FILE__), array('jquery'),'',true);
     wp_register_script('fit4life_fit_test_update-js-public', plugins_url('/public/js/fit4life_fit_test_update.js',__FILE__), array('jquery'),'',true);
-    wp_register_script('fit4life_login-js-public', plugins_url('/public/js/fit4life_login.js',__FILE__), array('jquery'),'',true);
     wp_register_style('fit4life-css-public', plugins_url('/public/css/fit4life_style.css',__FILE__) );
 
     // add to que of scripts that get loaded into every page
     wp_enqueue_script('fit4life_workout_update-js-public');
     wp_enqueue_script('fit4life_workout_menu-js-public');
     wp_enqueue_script('fit4life_fit_test_update-js-public');
-    wp_enqueue_script('fit4life_login-js-public');
     wp_enqueue_style('fit4life-css-public');
 
 }
@@ -573,11 +571,9 @@ function fit4life_workout_results(){
     
         if(isset($_POST)) {
 
-            $count = count($_POST) - 2;
-            $post_id = $_POST['program_id'];        //passing post_id from workout form
-            $day = $_POST['fit4life_day_num'];      //passing day number from workout form
-
-            //update_sub_field(array('gf_workout_programs', 1, 'gf_exercises', 4, 'gf_exercise_results'), 'Test Data', 2565);
+            $count = count($_POST) - 2;             // excluding the 2 hidden fields in the exercise record count
+            $post_id = $_POST['program_id'];        // passing post_id from workout form
+            $day = $_POST['fit4life_day_num'];      // passing day number from workout form
 
             $exercise = 1;
 
@@ -688,6 +684,14 @@ function remove_admin_bar() {
 }
 
 
+
+
+/* 6. HELPERS */
+// none
+
+
+
+
 /* 7. CUSTOM POST TYPES */
 
 // 7.1 ACF code
@@ -715,7 +719,6 @@ function fit4life_dashboard_admin_page() {
         </div>
             
     ';
-    
     
     echo $output;
     
