@@ -17,4 +17,4 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 
 
 // delete the plugin options
-delete_option( 'myplugin_options' );
+delete_option( 'fit4life_options' );

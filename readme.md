@@ -10,7 +10,7 @@ Domain Path:  /languages
 License:      GPL v2 or later
 License URI:  https://www.gnu.org/licenses/gpl-2.0.txt
 
-[name] is a fitness training application that allows personal trainers to develop custom training experiences for their members. Training members can record results of fitness tests and workouts, then receive feedback from trainers. Members can also track their performance and their personal best information.
+Fit-4-Life is a fitness training application that allows personal trainers to develop custom training experiences for their members. Training members can record results of fitness tests and workouts, then receive feedback from trainers. Members can also track their performance and their personal best information.
 
 == Description ==
 
